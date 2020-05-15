@@ -1,0 +1,66 @@
+#Genome analysed
+genome: bacterial
+
+# directory where exported data is located
+exportdir: export
+
+
+# Directory for temporary files
+TMPDIR: /fastdata/$USER/tmp
+
+#Fasta used for qzadb function (from database)
+
+database_fasta: /fastdata/md1nsk/Greengene_analysis/Database/gg_13_8_otus/rep_set/99_otus.fasta  
+database_taxonomy: Database/gg_13_8_otus/taxonomy/99_otu_taxonomy.txt 
+
+# Database for storing results (optional)
+database:
+    url: 
+
+conda environments:
+    py2: cgat, qiime
+
+# Functions run through 16S_RNA_analysis pipeline
+functions: qzadb, createmani, mani_qza, dereplicate, alignment
+
+##### Memory usage for each function #####
+# Number of threads and memory should be defined for each function below, depending on the number of samples used
+# Example below was for 12 samples analysed
+
+qza:
+    threads: 1
+    mem: "16G"
+
+trimmed:
+    threads: 2
+    mem: "12G"
+
+
+createmani: #standard memory usage, not necessary to be defined
+    threads: 1
+    mem: "8G"
+
+mani_qza:
+    threads: 2
+    mem: "16G"
+
+dereplicate:
+    threads: 2
+    mem: "16G"
+
+alignment:
+    threads: 3
+    mem: "16G"
+
+chimeras:
+    threads: 1
+    mem: "16G"
+
+feature_table:
+    threads: 1
+    mem: "10G"
+
+filterseq:
+    threads: 1
+    mem: "10G"
+
